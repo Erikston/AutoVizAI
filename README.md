@@ -106,7 +106,7 @@ Example:
 
 | Overview Page | Visuals Page |
 |---------------|--------------|
-| ![overview](screenshots/overview.png) | ![visuals](screenshots/visuals.png) |
+| ![overview](Screenshots/Overview.png) | ![visuals](screenshots/visuals.png) |
 
 ---
 
