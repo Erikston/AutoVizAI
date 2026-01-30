@@ -102,7 +102,7 @@ Each page updates automatically when filters change.
 
 | Overview Page | Understanding page | Visuals page |
 |---------------|--------------------|--------------|
-| ![overview](Screenshots/Overview.png) | ![Understanding](Screenshots/Understanding.png) | ![Visuals]()
+| ![overview](Screenshots/Overview.png) | ![Understanding](Screenshots/Understanding.png) | ![Visuals](Screenshots/visuals 1.png)
 
 ---
 
