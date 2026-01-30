@@ -104,8 +104,8 @@ Each page updates automatically when filters change.
 
 Example:
 
-| Overview Page | Visuals Page |
-|---------------|--------------|
+| Overview Page | Understanding page |
+|---------------|--------------------|
 | ![overview](Screenshots/Overview.png) | ![Understanding](Screenshots/Understanding.png) | ![Visuals]()
 
 ---
