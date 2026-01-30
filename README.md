@@ -98,14 +98,10 @@ Each page updates automatically when filters change.
 
 ---
 
-## 📷 Screenshots
+## 📷 Screenshot
 
-(Add your screenshots here in your GitHub repo)
-
-Example:
-
-| Overview Page | Understanding page |
-|---------------|--------------------|
+| Overview Page | Understanding page | Visuals page |
+|---------------|--------------------|--------------|
 | ![overview](Screenshots/Overview.png) | ![Understanding](Screenshots/Understanding.png) | ![Visuals]()
 
 ---
