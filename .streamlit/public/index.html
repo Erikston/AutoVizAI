@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AutoVizAI</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2E86C1" />
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Streamlit App Loaded in PWA -->
+  <iframe src="https://autovizai-qtgjxxlr4wupm7h3bsj54o.streamlit.app"></iframe>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("service-worker.js")
+        .catch((err) => console.log("SW registration failed:", err));
+    }
+  </script>
+
+</body>
+</html>
