@@ -6,22 +6,22 @@ import plotly.express as px
 # ================= PWA INJECTION =================
 def inject_pwa():
     st.markdown("""
-        <link rel="manifest" href="/manifest.json" />
+        <!-- Correct paths for Streamlit Cloud -->
+        <link rel="manifest" href="public/manifest.json">
 
         <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register("/service-worker.js")
-                    .then(() => console.log("Service Worker Registered"))
-                    .catch(err => console.log("SW registration failed:", err));
-                });
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("public/service-worker.js")
+                .then(() => console.log("Service Worker Registered"))
+                .catch(error => console.log("Service Worker Registration Failed:", error));
             }
         </script>
     """, unsafe_allow_html=True)
-inject_pwa()
+
 
 # ================= PAGE CONFIGURATION =================
 st.set_page_config(page_title="AutoVizAI", layout="wide")
+inject_pwa()
 
 st.title("📊 AutoVizAI – Power BI Style Dashboard")
 st.write("Upload a dataset, analyze it using dashboard pages, and export an interactive HTML report.")
