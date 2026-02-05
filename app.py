@@ -2,21 +2,20 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-import streamlit as st
-
-#===================== PWA INJECTION =======================
+# ===================== PWA INJECTION ======================
 def inject_pwa():
     st.markdown("""
-        <link rel="manifest" href="manifest.json" />
+        <link rel="manifest" href="/public/manifest.json" />
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
-                    navigator.serviceWorker.register("service-worker.js");
+                    navigator.serviceWorker.register('/public/service-worker.js');
                 });
             }
         </script>
     """, unsafe_allow_html=True)
 
+inject_pwa()
 
 # ================= PAGE CONFIGURATION =================
 st.set_page_config(page_title="AutoVizAI", layout="wide")
@@ -93,7 +92,7 @@ def generate_ai_insights(df, numeric_cols, categorical_cols):
 
     for col in categorical_cols[:2]:
         insights.append(
-            f"Most frequent value in '{col}' is '{df[col].value_counts().idxmax()}'."
+            f"Most frequent value in '{col}' is '{df[col].value_counts().idxmax()}'"
         )
 
     return insights
@@ -152,7 +151,7 @@ if uploaded_file is not None:
         ["📄 Overview", "🧠 Understanding", "📊 Visuals", "🧠 Insights", "📥 Export"]
     )
 
-    # -------- DATASET OVERVIEW --------
+    # -------- OVERVIEW --------
     with tab1:
         st.dataframe(filtered_df.head(), use_container_width=True)
         c1, c2, c3 = st.columns(3)
@@ -160,7 +159,7 @@ if uploaded_file is not None:
         c2.metric("Columns", filtered_df.shape[1])
         c3.metric("Missing", filtered_df.isnull().sum().sum())
 
-    # -------- DATA UNDERSTANDING --------
+    # -------- UNDERSTANDING --------
     with tab2:
         st.write("Numeric Columns:", numeric_cols)
         st.write("Categorical Columns:", categorical_cols)
@@ -168,7 +167,7 @@ if uploaded_file is not None:
         if numeric_cols:
             st.dataframe(filtered_df[numeric_cols].describe().T)
 
-    # -------- CHARTS VISUALS --------
+    # -------- VISUALS --------
     figures = []
     with tab3:
         for col in numeric_cols:
@@ -182,13 +181,13 @@ if uploaded_file is not None:
             st.plotly_chart(fig, use_container_width=True)
             figures.append(fig.to_html(full_html=False, include_plotlyjs="cdn"))
 
-    # -------- REPORT INSIGHTS --------
+    # -------- INSIGHTS --------
     with tab4:
         ai_insights = generate_ai_insights(filtered_df, numeric_cols, categorical_cols)
         for i in ai_insights:
             st.write("•", i)
 
-    # -------- REPORT EXPORT (HTML ONLY) --------
+    # -------- EXPORT --------
     with tab5:
         html_report = generate_html_report(
             filtered_df,
