@@ -2,6 +2,21 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+# =================== PWA IJECTION ================
+def inject_pwa():
+    st.markdown("""
+        <link rel="manifest" href="/public/manifest.json" />
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/public/service-worker.js');
+                });
+            }
+        </script>
+    """, unsafe_allow_html=True)
+
+inject_pwa()
+
 # ================= PAGE CONFIGURATION =================
 st.set_page_config(page_title="AutoVizAI", layout="wide")
 
@@ -189,3 +204,4 @@ if uploaded_file is not None:
             "AutoVizAI_Report.html",
             "text/html"
         )
+
