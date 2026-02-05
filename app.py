@@ -5,17 +5,16 @@ import plotly.express as px
 # ===================== PWA INJECTION ======================
 def inject_pwa():
     st.markdown("""
-        <link rel="manifest" href="/public/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/public/service-worker.js');
+                    navigator.serviceWorker.register("/service-worker.js");
                 });
             }
         </script>
     """, unsafe_allow_html=True)
 
-inject_pwa()
 
 # ================= PAGE CONFIGURATION =================
 st.set_page_config(page_title="AutoVizAI", layout="wide")
