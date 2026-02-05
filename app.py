@@ -2,21 +2,21 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# ===================== PWA INJECTION ======================
-# ===================== PWA INJECTION ======================
+# =============== PWA INJEXCTION =========================
 def inject_pwa():
     st.markdown("""
-        <link rel="manifest" href="/.streamlit/public/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
 
         <script>
             if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("/.streamlit/public/service-worker.js")
-                .then(() => console.log("Service Worker Registered"))
-                .catch(error => console.log("Service Worker Registration Failed:", error));
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker.register("/service-worker.js")
+                    .then(() => console.log("SW registered"))
+                    .catch(err => console.log("SW registration failed:", err));
+                });
             }
         </script>
     """, unsafe_allow_html=True)
-
 
 # ================= PAGE CONFIGURATION =================
 st.set_page_config(page_title="AutoVizAI", layout="wide")
