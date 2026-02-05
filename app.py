@@ -3,21 +3,18 @@ import pandas as pd
 import plotly.express as px
 
 # ===================== PWA INJECTION ======================
-# ================= PWA INJECTION =================
 def inject_pwa():
-    st.markdown("""
-        <!-- Correct paths for Streamlit Cloud -->
-        <link rel="manifest" href="public/manifest.json">
+    st.markdown("""    
+        <link rel="manifest" href="/manifest.json" />
 
         <script>
             if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("public/service-worker.js")
+                navigator.serviceWorker.register("/service-worker.js")
                 .then(() => console.log("Service Worker Registered"))
-                .catch(error => console.log("Service Worker Registration Failed:", error));
+                .catch(error => console.log("SW registration failed", error));
             }
         </script>
     """, unsafe_allow_html=True)
-
 
 # ================= PAGE CONFIGURATION =================
 st.set_page_config(page_title="AutoVizAI", layout="wide")
